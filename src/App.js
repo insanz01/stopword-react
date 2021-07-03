@@ -41,8 +41,8 @@ const App = () => {
 
   return (
     <div>
-      <Container>
-        <Row className="my-4">
+      <Container className="py-4">
+        <Row className="mb-4">
           <Col md={12} xs={12}>
             <h1 className="display-4 text-center text-underline">{title}</h1>
           </Col>
