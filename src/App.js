@@ -120,7 +120,7 @@ const StopwordRemover = () => {
           <FormControl as="textarea" placeholder="Type here..." rows={10} value={text} onChange={(e) => setText(e.target.value)} />
         </InputGroup>
         <Button variant="primary" className="mt-2 float-right" onClick={handleClick}>
-          Proccess
+          PROCESS
         </Button>
       </Col>
       <Col md={6} xs={12}>
