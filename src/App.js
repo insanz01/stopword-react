@@ -4,6 +4,8 @@ import {Container, Row, Col, InputGroup, FormControl, Button, Card} from 'react-
 import StopWord from './assets/Stopword';
 import './assets/style.css';
 
+// vercel --prod to deploy and overwrite
+
 const StopwordChecker = () => {
 
   const [result, setResult] = useState('');
@@ -12,19 +14,28 @@ const StopwordChecker = () => {
   const [stopList, setStopWord] = useState([]);
 
   const handleClick = () => {
-    let isStopword = false;
 
-    stopList.forEach(word => {
-      if(word.toUpperCase() === text.toUpperCase() ) {
-        isStopword = true;
-      }
-    })
+    const allText = text.split(" ");
 
-    const temp = (isStopword) ? 'ADALAH STOPWORD': 'BUKAN STOPWORD';
+    if(allText.length > 1) {
+      const res = `HANYA BOLEH MENGUJI SATU KATA`;
 
-    const res = `KATA "${text.toUpperCase()}" ${temp}`;
+      setResult(res);
+    } else {
+      let isStopword = false;
+  
+      stopList.forEach(word => {
+        if(word.toUpperCase() === text.toUpperCase() ) {
+          isStopword = true;
+        }
+      })
 
-    setResult(res);
+      const temp = (isStopword) ? 'ADALAH STOPWORD': 'BUKAN STOPWORD';
+
+      const res = `KATA "${text.toUpperCase()}" ${temp}`;
+
+      setResult(res);
+    }
   }
 
   const ShowResult = () => {
@@ -63,7 +74,7 @@ const StopwordChecker = () => {
         <InputGroup>
           <FormControl placeholder="Type one word here..." className="custom-input" value={text} onChange={(e) => setText(e.target.value)} />
           <Button variant="outline-secondary" onClick={handleClick}>
-            Check
+            CHECK
           </Button>
         </InputGroup>
       </Col>
